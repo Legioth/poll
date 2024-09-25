@@ -1,0 +1,149 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body.noscroll {
+    height: 100%;
+}
+
+.poll {
+    padding: var(--lumo-space-l);
+    gap: var(--lumo-space-m);
+    align-items: stretch;
+    height: 100%;
+}
+
+.poll .join-at {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: var(--lumo-space-s) var(--lumo-space-m);
+}
+
+.poll .active-users {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: var(--lumo-space-s) var(--lumo-space-m);
+}
+
+/* Chart max width + width of the label */
+@media (width < 1080px) {
+    .poll .join-at,
+    .poll .active-users {
+        display: none;
+    }
+}
+
+.poll .qr {
+    width: 100%;
+    flex-grow: 1;
+    padding: var(--lumo-space-l) 0;
+    box-sizing: border-box;
+}
+
+.poll > vaadin-vertical-layout {
+    gap: var(--lumo-space-s);
+}
+
+.poll > vaadin-vertical-layout,
+.poll > vaadin-radio-group {
+    max-width: 800px;
+}
+
+.poll > vaadin-vertical-layout > div,
+.poll > vaadin-radio-group > div {
+    background: var(--lumo-primary-color);
+    height: 26px;
+    width: fit-content;
+    border-radius: 5px;
+    transition: min-width 0.3s cubic-bezier(0.1, 1.0, 1.0, 1.05);
+    color: white;
+    padding: 0 var(--lumo-space-s);
+    box-sizing: border-box;
+    font-weight: 600;
+}
+
+.poll vaadin-radio-group::part(group-field) {
+    flex-direction: column;
+    gap: var(--lumo-space-s);
+}
+
+.poll label {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--lumo-space-s);
+    height: 38px;
+}
+
+.poll label::before {
+    width: 38px;
+    height: 38px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: var(--lumo-space-s);
+}
+
+.poll .Vaadin label::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='266' height='278' viewBox='0 0 266 278' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1_15)'%3E%3Cpath d='M265.2 138.8C265.2 132.2 261.3 126.5 255.6 123.9C255.4 123.8 255.2 123.6 254.9 123.5L149.4 66.4C146.6 64.8 143.5 64 140.3 64C130.2 64 122 72.2 122 82.3C122 90.4 126 95.9 134.5 99.6L207.4 138.7L134.6 177.8C126 181.6 122 187.1 122 195.2C122 205.3 130.2 213.5 140.3 213.5C143.5 213.5 146.6 212.7 149.4 211.1L254.9 154C255.1 153.9 255.2 153.8 255.4 153.7C261.2 151.3 265.2 145.5 265.2 138.8Z' fill='%2300B4F0'/%3E%3Cpath d='M108.5 138.7C108.5 130.7 102 124.1 93.9 124.1H90.5H90.4C82.8 124.1 76.6 117.9 76.6 110.2V81.8V36.3V35.5C76.6 26.9 73.6 19.1 68.5 12.9C62 5 52.1 0 41.1 0L13.8 0.100006C6.29999 0.100006 0.199951 6.2 0.199951 13.7C0.199951 18.8 2.99998 23.2 7.09998 25.6C9.09998 26.7 11.3 27.3 13.8 27.3H22.4C30.1 27.3 36.2999 33.5 36.2999 41.2V70.5V108.8C36.2999 123.4 47.1 135.5 61.1 137.7C61.1 137.7 64.7999 138.4 68.2999 138.4V138.7V139C64.7999 139 61.1 139.7 61.1 139.7C47.1 141.8 36.2999 153.9 36.2999 168.6V206.9V236.2C36.2999 243.9 30.1 250.1 22.4 250.1H13.8C11.4 250.1 9.09998 250.7 7.09998 251.8C2.99998 254.1 0.199951 258.6 0.199951 263.7C0.199951 271.2 6.29999 277.3 13.8 277.3L41.1 277.4C52.1 277.4 62 272.4 68.5 264.5C73.6 258.4 76.6 250.5 76.6 241.9V241.1V195.6V167.2C76.6 159.6 82.8 153.4 90.4 153.3H90.5H93.9C101.9 153.3 108.5 146.8 108.5 138.7C108.5 138.9 108.5 138.8 108.5 138.7Z' fill='%2300B4F0'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1_15'%3E%3Crect width='266' height='278' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+
+.poll .Vaadin > div {
+    background: linear-gradient(45deg, #1A81FA 0%, #8854FC 100%);
+}
+
+.poll .React label::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='22' height='21' viewBox='0 0 22 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1_9)'%3E%3Cpath d='M11 12.63C12.1046 12.63 13 11.7346 13 10.63C13 9.52544 12.1046 8.63 11 8.63C9.89543 8.63 9 9.52544 9 10.63C9 11.7346 9.89543 12.63 11 12.63Z' fill='%23087EA4'/%3E%3Cpath d='M11 15.13C16.5228 15.13 21 13.1153 21 10.63C21 8.14472 16.5228 6.13 11 6.13C5.47715 6.13 1 8.14472 1 10.63C1 13.1153 5.47715 15.13 11 15.13Z' stroke='%23087EA4'/%3E%3Cpath d='M7.10288 12.88C9.86431 17.6629 13.8477 20.5329 16 19.2903C18.1523 18.0476 17.6585 13.1629 14.8971 8.38001C12.1357 3.59708 8.15231 0.727116 6 1.96976C3.84768 3.2124 4.34146 8.09708 7.10288 12.88Z' stroke='%23087EA4'/%3E%3Cpath d='M7.1029 8.38001C4.34147 13.1629 3.84769 18.0476 6.00001 19.2903C8.15233 20.5329 12.1357 17.6629 14.8971 12.88C17.6585 8.09708 18.1523 3.2124 16 1.96976C13.8477 0.727116 9.86432 3.59708 7.1029 8.38001Z' stroke='%23087EA4'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1_9'%3E%3Crect width='22' height='20.27' fill='white' transform='translate(0 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+
+.poll .React > div {
+    background: linear-gradient(45deg, #055670 0%, #087EA4 100%);
+}
+
+.poll .Angular label::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%0A%3Csvg width='223' height='236' viewBox='0 0 223 236' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M222.077 39.692L214.058 165.615L137.387 0.5L222.077 39.692ZM168.972 202.517L111.039 235.573L53.105 202.517L64.888 173.961H157.189L168.972 202.517ZM111.039 63.175L141.396 136.978H80.681L111.039 63.175ZM7.937 165.615L0 39.692L84.69 0.5L7.937 165.615Z' fill='url(%23paint0_linear_1_3)'/%3E%3Cpath d='M222.077 39.692L214.058 165.615L137.387 0.5L222.077 39.692ZM168.972 202.517L111.039 235.573L53.105 202.517L64.888 173.961H157.189L168.972 202.517ZM111.039 63.175L141.396 136.978H80.681L111.039 63.175ZM7.937 165.615L0 39.692L84.69 0.5L7.937 165.615Z' fill='url(%23paint1_radial_1_3)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_1_3' x1='0' y1='192.5' x2='982' y2='192.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F0070C'/%3E%3Cstop offset='0.526' stop-color='%23CC26D5'/%3E%3Cstop offset='1' stop-color='%237702FF'/%3E%3C/linearGradient%3E%3CradialGradient id='paint1_radial_1_3' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(305.5 -61.0005) rotate(118.122) scale(205.794 205.794)'%3E%3Cstop stop-color='%23FF41F8'/%3E%3Cstop offset='0.707' stop-color='%23FF41F8' stop-opacity='0.5'/%3E%3Cstop offset='1' stop-color='%23FF41F8' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+
+.poll .Angular > div {
+    background: linear-gradient(45deg, #F0070C 0%, #CC26D5 52.6%, #7702FF 100%);
+}
+
+.poll .Vue label::before {
+    content: "";
+    background-image: url('data:image/svg+xml,<svg version="1.1" viewBox="0 0 261.76 226.69" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.3333 0 0 -1.3333 -76.311 313.34)"><g transform="translate(178.06 235.01)"><path d="m0 0-22.669-39.264-22.669 39.264h-75.491l98.16-170.02 98.16 170.02z" fill="%2341b883"/></g><g transform="translate(178.06 235.01)"><path d="m0 0-22.669-39.264-22.669 39.264h-36.227l58.896-102.01 58.896 102.01z" fill="%2334495e"/></g></g></svg>');
+}
+
+.poll .Vue > div {
+    background: linear-gradient(45deg, #34495e 0%, #41b883 100%);
+}
+
+/* https://github.com/anezthes/vaadinplus/blob/main/frontend/themes/vaadin%2B/components/vaadin-checkbox.css */
+
+.poll vaadin-checkbox::part(checkbox) {
+    border-radius: 9999px;
+    width: var(--lumo-size-m);
+}
+
+.poll vaadin-checkbox::part(checkbox)::after {
+    content: "";
+    background-color: var(--lumo-secondary-text-color);
+    border-radius: 9999px;
+    inset: 0;
+    /* (size-m/2 - size-m/3) / 2 = size-m/12 */
+    margin: calc(var(--lumo-size-m) / 12);
+    opacity: 1;
+    transition: transform 0.2s;
+    
+    height: calc(var(--lumo-size-m) / 3);
+    width: calc(var(--lumo-size-m) / 3);
+}
+
+.poll vaadin-checkbox[checked]::part(checkbox)::after {
+    background-color: var(--lumo-primary-contrast-color);
+    /* size-m - size-m/3 - 2*size-m/12 = size-m/2 */
+    transform: translateX(calc(var(--lumo-size-m) / 2));
+}
