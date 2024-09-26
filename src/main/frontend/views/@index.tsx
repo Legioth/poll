@@ -1,8 +1,7 @@
-import { ActionOnLostSubscription } from '@vaadin/hilla-frontend';
 import { computed, NumberSignal, useSignal, useSignalEffect } from '@vaadin/hilla-react-signals';
 import { Checkbox, RadioButton, RadioGroup, VerticalLayout } from '@vaadin/react-components';
 import { StatsService } from 'Frontend/generated/endpoints';
-import { useEffect } from 'react';
+import useFluxValue from 'Frontend/useFluxValue';
 import QRCode from 'react-qr-code';
 import { Fragment } from 'react/jsx-runtime';
 
@@ -30,13 +29,7 @@ function handleChange(signal: NumberSignal, event: CustomEvent<{ value: boolean 
 }
 
 export default function EmptyView() {
-  const userCount = useSignal(1);
-  useEffect(() => {
-    const s = StatsService.userCount()
-      .onSubscriptionLost(() => ActionOnLostSubscription.RESUBSCRIBE)
-      .onNext(count => userCount.value = count);
-    return () => s.cancel();
-  }, []);
+const userCount = useFluxValue(StatsService.userCount, 1);
 
   useSignalEffect(() => {
     if (currentQuestion.value?.question) {
@@ -59,7 +52,7 @@ export default function EmptyView() {
     <h1>{currentQuestion.value?.question ?? "Waiting for participants"}</h1>
 
     <p className="join-at" >Join at <a href={location.href}>{location.href}</a></p>
-    <p className="active-users">{userCount} active users</p>
+    <p className="active-users">{userCount} active user{userCount.value == 1 ? '' : 's'}</p>
 
     {!currentQuestion.value.question
       ? <QRCode value={location.href} className="qr" />
