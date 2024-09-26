@@ -10,7 +10,7 @@ function firstWord(line: string): string {
   return line.replace(/[ -].*/, "");
 }
 
-const currentQuestion = StatsService.currentQuestion({ defaultValue: undefined });
+const currentQuestion = StatsService.currentQuestion({ defaultValue: {question: 'default', multiple: false, options: []} });
 
 const options = computed(() => {
   if (!currentQuestion?.value) {
@@ -50,6 +50,9 @@ export default function EmptyView() {
 
   if (!currentQuestion.value) {
     return "No poll has been started"
+  } else if (currentQuestion.value?.question == 'default') {
+    // Waiting for data
+    return;
   }
 
   return <VerticalLayout className="poll">
