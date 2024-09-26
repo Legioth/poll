@@ -34,6 +34,10 @@ function pickRandom<T>(values: T[]): T {
   return values[Math.floor(Math.random() * values.length)];
 }
 
+function stripUrl(url: string) : string {
+  return url.replace("https://", "").replace(/\/$/, "");
+}
+
 export default function EmptyView() {
   const [searchParams] = useSearchParams();
   const userCount = useFluxValue(StatsService.userCount, 1);
@@ -82,7 +86,7 @@ export default function EmptyView() {
   return <VerticalLayout className="poll">
     <h1>{currentQuestion.value?.question ?? "Waiting for participants"}</h1>
 
-    <p className="join-at" >Join at <a href={location.href}>{location.href}</a></p>
+    <p className="join-at" >Join at <a href={location.href}>{stripUrl(location.href)}</a></p>
     <p className="active-users">{userCount} active user{userCount.value == 1 ? '' : 's'}</p>
 
     {!currentQuestion.value.question
