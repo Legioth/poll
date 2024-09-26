@@ -31,7 +31,7 @@ function handleChange(signal: NumberSignal, event: CustomEvent<{ value: boolean 
 }
 
 function pickRandom<T>(values: T[]): T {
-  return values[Math.floor(Math.random() * values.length)];  
+  return values[Math.floor(Math.random() * values.length)];
 }
 
 export default function EmptyView() {
@@ -89,14 +89,17 @@ export default function EmptyView() {
       ? <QRCode value={location.href} className="qr" />
 
       : currentQuestion.value.multiple
-        ? Object.entries(options.value).map(([label, signal]) => {
-          return <VerticalLayout key={signal.id} className={firstWord(label)}>
-            <Checkbox label={label} onCheckedChanged={(event) => handleChange(signal, event)} />
-            <VotesBar votes={signal.value} maxVotes={maxVotes.value} />
-          </VerticalLayout>;
-        })
-        : <RadioGroup>{
-          Object.entries(options.value).map(([label, signal]) => {
+        ? <>
+          Check all that apply
+          {Object.entries(options.value).map(([label, signal]) => {
+            return <VerticalLayout key={signal.id} className={firstWord(label)}>
+              <Checkbox label={label} onCheckedChanged={(event) => handleChange(signal, event)} />
+              <VotesBar votes={signal.value} maxVotes={maxVotes.value} />
+            </VerticalLayout>;
+          })}
+        </>
+        : <RadioGroup>
+          {Object.entries(options.value).map(([label, signal]) => {
             return <Fragment key={signal.id}>
               <RadioButton label={label} onCheckedChanged={(event) => handleChange(signal, event)} />
               <VotesBar votes={signal.value} maxVotes={maxVotes.value} />
