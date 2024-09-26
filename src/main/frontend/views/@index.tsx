@@ -2,7 +2,9 @@ import { computed, NumberSignal, useSignalEffect } from '@vaadin/hilla-react-sig
 import { Checkbox, RadioButton, RadioGroup, VerticalLayout } from '@vaadin/react-components';
 import { StatsService } from 'Frontend/generated/endpoints';
 import useFluxValue from 'Frontend/useFluxValue';
+import { useEffect } from 'react';
 import QRCode from 'react-qr-code';
+import { useSearchParams } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
 function firstWord(line: string): string {
@@ -28,8 +30,37 @@ function handleChange(signal: NumberSignal, event: CustomEvent<{ value: boolean 
   signal.incrementBy(event.detail.value ? 1 : -1);
 }
 
+function pickRandom<T>(values: T[]): T {
+  return values[Math.floor(Math.random() * values.length)];  
+}
+
 export default function EmptyView() {
+  const [searchParams] = useSearchParams();
   const userCount = useFluxValue(StatsService.userCount, 1);
+
+  const benchmarkMode = searchParams.has("benchmark");
+  useEffect(() => {
+    if (!benchmarkMode) {
+      return undefined;
+    }
+    const i = 800 + Math.random() * 400;
+    const t = setInterval(() => {
+      const picked = pickRandom(Object.values(options.value));
+
+      if (picked.value == 0) {
+        picked.incrementBy(1);
+      } else if (picked.value < 10) {
+        // Bias towards increasing
+        const increment = pickRandom([1, 1, -1]);
+        picked.incrementBy(increment);
+      } else {
+        // Bias towards decreasing
+        const increment = pickRandom([1, -1, -1]);
+        picked.incrementBy(increment);
+      }
+    }, i);
+    return () => clearInterval(t);
+  }, [benchmarkMode]);
 
   useSignalEffect(() => {
     if (currentQuestion.value?.question) {
