@@ -9,6 +9,7 @@ import com.vaadin.hilla.Nullable;
 import com.vaadin.hilla.signals.NumberSignal;
 import com.vaadin.hilla.signals.ValueSignal;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 import reactor.core.publisher.Sinks.Many;
 
@@ -30,6 +31,7 @@ public class StatsService {
     private final ConcurrentHashMap<String, NumberSignal> stats = new ConcurrentHashMap<>();
 
     private final Many<Integer> userCountSink = Sinks.many().replay().limit(1);
+    private final Many<Integer> maxCountSink = Sinks.many().replay().limit(1);
 
     private volatile int maxCount = 0;
 
@@ -42,11 +44,15 @@ public class StatsService {
             if (count > maxCount) {
                 // Fine to occasionally overwrite a larger number due to a race
                 maxCount = count;
-                System.out.println("New max count: " + count);
+                maxCountSink.tryEmitNext(count);
             }
         }), () -> {
             userCountSink.tryEmitNext(userCountSink.currentSubscriberCount());
         });
+    }
+
+    public Flux<Integer> maxCount() {
+        return maxCountSink.asFlux();
     }
 
     public NumberSignal getStats(String name) {
