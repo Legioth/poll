@@ -1,11 +1,10 @@
-import { ValueSignal } from "@vaadin/hilla-react-signals";
-import { Button, HorizontalLayout, VerticalLayout } from "@vaadin/react-components";
+import { Button, VerticalLayout } from "@vaadin/react-components";
 import useFluxValue from 'Frontend/useFluxValue';
 import { StatsService } from "Frontend/generated/endpoints";
 import PollQuestion from "Frontend/generated/org/vaadin/leif/StatsService/PollQuestion";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-const currentQuestion = StatsService.currentQuestion({defaultValue: undefined});
+const currentQuestion = StatsService.currentQuestion({ defaultValue: undefined });
 
 const options: PollQuestion[] = [
     {

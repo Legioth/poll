@@ -1,4 +1,4 @@
-import { computed, NumberSignal, useSignal, useSignalEffect } from '@vaadin/hilla-react-signals';
+import { computed, NumberSignal, useSignalEffect } from '@vaadin/hilla-react-signals';
 import { Checkbox, RadioButton, RadioGroup, VerticalLayout } from '@vaadin/react-components';
 import { StatsService } from 'Frontend/generated/endpoints';
 import useFluxValue from 'Frontend/useFluxValue';
@@ -9,7 +9,7 @@ function firstWord(line: string): string {
   return line.replace(/[ -].*/, "");
 }
 
-const currentQuestion = StatsService.currentQuestion({ defaultValue: {question: 'default', multiple: false, options: []} });
+const currentQuestion = StatsService.currentQuestion({ defaultValue: { question: 'default', multiple: false, options: [] } });
 
 const options = computed(() => {
   if (!currentQuestion?.value) {
@@ -29,7 +29,7 @@ function handleChange(signal: NumberSignal, event: CustomEvent<{ value: boolean 
 }
 
 export default function EmptyView() {
-const userCount = useFluxValue(StatsService.userCount, 1);
+  const userCount = useFluxValue(StatsService.userCount, 1);
 
   useSignalEffect(() => {
     if (currentQuestion.value?.question) {
