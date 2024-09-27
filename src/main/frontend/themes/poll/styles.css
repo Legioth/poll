@@ -9,9 +9,17 @@ body.noscroll {
 
 .poll {
     padding: var(--lumo-space-l);
-    gap: var(--lumo-space-m);
+    gap: 20px;
     align-items: stretch;
     height: 100%;
+}
+
+.poll h1 {
+    font-size: 36px;
+}
+
+.poll vaadin-button {
+    align-self: start;
 }
 
 .poll .join-at {
@@ -55,6 +63,7 @@ body.noscroll {
 .poll > vaadin-vertical-layout > div,
 .poll > vaadin-radio-group > div {
     background: var(--lumo-primary-color);
+
     height: 26px;
     width: fit-content;
     border-radius: 5px;
@@ -66,7 +75,7 @@ body.noscroll {
 }
 
 .poll > vaadin-radio-group > div {
-    margin-bottom: var(--lumo-space-s);
+    margin-bottom: 12px;
 }
 
 .poll vaadin-radio-group::part(group-field) {
@@ -149,6 +158,13 @@ body.noscroll {
     content: "";
     background-image: url('data:image/svg+xml,<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 42C8.2 42 7.5 41.7 6.9 41.1C6.3 40.5 6 39.8 6 39V30.4H9V39H17.6V42H9ZM39 42H30.4V39H39V30.4H42V39C42 39.8 41.7 40.5 41.1 41.1C40.5 41.7 39.8 42 39 42ZM6 9C6 8.2 6.3 7.5 6.9 6.9C7.5 6.3 8.2 6 9 6H17.6V9H9V17.6H6V9ZM42 9V17.6H39V9H30.4V6H39C39.8 6 40.5 6.3 41.1 6.9C41.7 7.5 42 8.2 42 9ZM23.8515 35.75C24.3838 35.75 24.8333 35.5662 25.2 35.1985C25.5667 34.8308 25.75 34.3808 25.75 33.8485C25.75 33.3162 25.5662 32.8667 25.1985 32.5C24.8308 32.1333 24.3808 31.95 23.8485 31.95C23.3162 31.95 22.8667 32.1338 22.5 32.5015C22.1333 32.8692 21.95 33.3192 21.95 33.8515C21.95 34.3838 22.1338 34.8333 22.5015 35.2C22.8692 35.5667 23.3192 35.75 23.8515 35.75ZM22.2 28.35H25.05C25.05 27.3833 25.2083 26.5667 25.525 25.9C25.8417 25.2333 26.4333 24.4667 27.3 23.6C28.3667 22.5333 29.125 21.575 29.575 20.725C30.025 19.875 30.25 18.9738 30.25 18.0215C30.25 16.3072 29.6565 14.9167 28.4695 13.85C27.2825 12.7833 25.776 12.25 23.95 12.25C22.2833 12.25 20.8333 12.6417 19.6 13.425C18.3667 14.2083 17.4667 15.35 16.9 16.85L19.55 17.95C20.0167 17.0833 20.6333 16.3917 21.4 15.875C22.1667 15.3583 23.017 15.1 23.951 15.1C24.993 15.1 25.8283 15.3833 26.457 15.95C27.0857 16.5167 27.4 17.2333 27.4 18.1C27.4 18.7667 27.2167 19.4083 26.85 20.025C26.4833 20.6417 25.8667 21.3667 25 22.2C23.9 23.2667 23.1583 24.2083 22.775 25.025C22.3917 25.8417 22.2 26.95 22.2 28.35Z" fill="%23182739" fill-opacity="0.94"/></svg>');
 }
+
+.poll .Server > div,
+.poll .Desktop > div,
+.poll .None > div {
+    background: linear-gradient(45deg, var(--lumo-secondary-text-color) 0%, var(--lumo-tertiary-text-color));   
+}
+
 
 
 /* https://github.com/anezthes/vaadinplus/blob/main/frontend/themes/vaadin%2B/components/vaadin-checkbox.css */
