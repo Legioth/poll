@@ -109,7 +109,6 @@ export default function EmptyView() {
               <VotesBar votes={signal.value} maxVotes={maxVotes.value} />
             </Fragment>;
           })}
-          <RadioButton label="Blank" />
         </RadioGroup>
     }
   </VerticalLayout>
