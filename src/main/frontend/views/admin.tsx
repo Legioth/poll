@@ -20,7 +20,7 @@ const options: PollQuestion[] = [
         ]
     },
     {
-        question: "Have you built collaborative UIs?", multiple: false, options: [
+        question: "Have you built real-time UIs?", multiple: false, options: [
             { caption: "Yes, all the time", signalName: "building" },
             { caption: "Only a few times", signalName: "occasionally" },
             { caption: "Not yet but planning to", signalName: "planning" },
@@ -28,9 +28,9 @@ const options: PollQuestion[] = [
         ]
     },
     {
-        question: "Why don't you build more collaborative UIs?", multiple: false, options: [
+        question: "Why don't you build more real-time UIs?", multiple: false, options: [
             { caption: "It's already all I do", signalName: "allIDo" },
-            { caption: "Use cases are inherently single-user", signalName: "singleUser" },
+            { caption: "Wouldn't fit with our use cases", signalName: "singleUser" },
             { caption: "Lack of customer awareness", signalName: "awareness" },
             { caption: "Not worth the additional UI design effort", signalName: "uiDesign" },
             { caption: "Not worth the additional implementation effort", signalName: "technicalDifficulty" },
