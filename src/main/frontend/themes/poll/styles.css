@@ -22,18 +22,21 @@ body.noscroll {
     align-self: start;
 }
 
-.poll .join-at {
+.poll .join-at,
+.poll .active-users {
     position: absolute;
+    margin: var(--lumo-space-m) var(--lumo-space-l);
+    font-size: var(--lumo-font-size-xl);
+}
+
+.poll .join-at {
     top: 0;
     right: 0;
-    margin: var(--lumo-space-s) var(--lumo-space-m);
 }
 
 .poll .active-users {
-    position: absolute;
     bottom: 0;
     right: 0;
-    margin: var(--lumo-space-s) var(--lumo-space-m);
 }
 
 /* Chart max width + width of the label */
