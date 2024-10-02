@@ -36,11 +36,6 @@ public class StatsService {
 
     private volatile int maxCount = 0;
 
-    public StatsService() {
-        Flux.interval(Duration.ofSeconds(30))
-                .subscribe(ignore -> userCountSink.tryEmitNext(userCountSink.currentSubscriberCount()));
-    }
-
     public EndpointSubscription<Integer> userCount() {
         return EndpointSubscription.of(userCountSink.asFlux().doOnSubscribe(ignore -> {
             // + 1 since this subscription is not yet registered
