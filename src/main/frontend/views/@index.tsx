@@ -76,6 +76,8 @@ export default function EmptyView() {
     return () => document.body.classList.remove("noscroll");
   })
 
+  console.log("Render with ", Object.fromEntries(Object.entries(options.value).map(([key, value]) => [key, value.value])));
+
   if (!currentQuestion.value) {
     return "No poll has been started"
   } else if (currentQuestion.value?.question == 'default') {
