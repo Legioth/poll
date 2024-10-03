@@ -13,7 +13,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 import reactor.core.publisher.Sinks.Many;
 
-import java.time.Duration;
 import java.util.concurrent.ConcurrentHashMap;
 
 @BrowserCallable
@@ -66,5 +65,7 @@ public class StatsService {
 
     public void resetStats() {
         stats.clear();
+        maxCount = userCountSink.currentSubscriberCount();
+        maxCountSink.tryEmitNext(maxCount);
     }
 }
