@@ -1,6 +1,6 @@
 # Full-stack signals poll demo
 
-This project is an example of building a real-time poll application using full-stack signals using Vaadin Hilla.
+This project is an example of building a real-time poll application using full-stack signals using Vaadin Hilla. The `main` branch contains the starting point for the live-coding demo while the `demo` branch contains the final live-coding demo.
 
 ## Running the application
 
