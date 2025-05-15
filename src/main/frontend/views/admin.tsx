@@ -9,8 +9,9 @@ const currentQuestion = StatsService.currentQuestion({ defaultValue: undefined }
 const options: PollQuestion[] = [
     {
         question: "How do you build UIs?", multiple: true, options: [
-            { caption: "Flow", signalName: "flow" },
-            { caption: "Hilla", signalName: "hilla" },
+//            { caption: "Flow", signalName: "flow" },
+//            { caption: "Hilla", signalName: "hilla" },
+            { caption: "Vaadin", signalName: "vaadin" },
             { caption: "React", signalName: "react" },
             { caption: "Angular", signalName: "angular" },
             { caption: "Vue", signalName: "vue" },
