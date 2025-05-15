@@ -2,7 +2,7 @@ import { Button, VerticalLayout } from "@vaadin/react-components";
 import useFluxValue from 'Frontend/useFluxValue';
 import { StatsService } from "Frontend/generated/endpoints";
 import PollQuestion from "Frontend/generated/org/vaadin/leif/StatsService/PollQuestion";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 const currentQuestion = StatsService.currentQuestion({ defaultValue: undefined });
 

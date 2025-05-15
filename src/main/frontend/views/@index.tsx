@@ -4,7 +4,7 @@ import { StatsService } from 'Frontend/generated/endpoints';
 import useFluxValue from 'Frontend/useFluxValue';
 import { useEffect } from 'react';
 import QRCode from 'react-qr-code';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { Fragment } from 'react/jsx-runtime';
 
 function firstWord(line: string): string {
