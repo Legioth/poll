@@ -1,19 +1,19 @@
 package org.vaadin.leif;
 
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.hilla.BrowserCallable;
 import com.vaadin.hilla.EndpointSubscription;
-import com.vaadin.hilla.Nullable;
 import com.vaadin.hilla.signals.NumberSignal;
 import com.vaadin.hilla.signals.ValueSignal;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 import reactor.core.publisher.Sinks.Many;
-
-import java.util.concurrent.ConcurrentHashMap;
 
 @BrowserCallable
 @Service
